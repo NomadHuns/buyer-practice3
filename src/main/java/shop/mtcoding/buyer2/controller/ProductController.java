@@ -15,7 +15,7 @@ import shop.mtcoding.buyer2.model.ProductRepository;
 public class ProductController {
 
     @Autowired
-    ProductRepository productRepository;
+    private ProductRepository productRepository;
 
     @GetMapping({ "/", "/product" })
     public String mainPage(Model model) {
@@ -29,6 +29,6 @@ public class ProductController {
         Product product = productRepository.findById(id);
         model.addAttribute("product", product);
         return "product/detail";
-    
+
     }
 }
