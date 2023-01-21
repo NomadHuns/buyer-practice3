@@ -17,6 +17,7 @@
                     <c:choose>
                         <c:when test="${principal == null}">
                             <li><a href="/loginForm">로그인</a></li>
+                            <li><a href="/joinForm">회원가입</a></li>
                         </c:when>
 
                         <c:otherwise>
