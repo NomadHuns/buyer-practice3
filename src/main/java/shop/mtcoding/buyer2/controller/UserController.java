@@ -32,6 +32,9 @@ public class UserController {
         if (principal == null) {
             return "redirect:/loginForm";
         }
+        if (remember == null) {
+            remember = "";
+        }
         if (remember.equals("on")) {
             Cookie cookie = new Cookie("remember", username);
             response.addCookie(cookie);

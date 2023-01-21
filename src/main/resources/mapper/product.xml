@@ -14,7 +14,7 @@
       INSERT INTO product_tb(name, price, qty, created_at) values(#{name}, #{price}, #{qty}, now())
    </insert>
    <update id="updateById">
-      UPDATE product_tb SET name = #{name}, price = #{price}, qty = ${qty} where id = {id}
+      UPDATE product_tb SET name = #{name}, price = #{price}, qty = #{qty} where id = #{id}
    </update>
    <delete id="deleteById">
       delete from product_tb where id = #{id}

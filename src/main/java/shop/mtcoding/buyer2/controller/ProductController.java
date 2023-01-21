@@ -27,6 +27,9 @@ public class ProductController {
     @GetMapping("/product/{id}")
     public String detail(@PathVariable("id") int id, Model model) {
         Product product = productRepository.findById(id);
+        if (product == null) {
+            return "redirect:/missing";
+        }
         model.addAttribute("product", product);
         return "product/detail";
 
