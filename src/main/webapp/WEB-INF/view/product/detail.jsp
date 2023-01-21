@@ -13,8 +13,8 @@
             <tr>
                 <td>${product.id}</td>
                 <td>${product.name}</td>
-                <td>${product.price}</td>
-                <td>${product.qty}</td>
+                <td>${product.price}개</td>
+                <td>${product.qty}원</td>
                 <td>${product.createdAtToString}</td>
             </tr>
         </table>

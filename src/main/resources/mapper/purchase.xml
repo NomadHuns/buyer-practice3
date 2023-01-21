@@ -19,4 +19,7 @@
    <delete id="deleteById">
       delete from purchase_tb where id = #{id}
    </delete>
+   <select id="findByUserId" resultType="shop.mtcoding.buyer2.dto.PurchaseAllDto">
+      SELECT pu.id, us.username, pr.name, pu.count, pu.created_at FROM (SELECT * FROM PURCHASE_TB where user_id = #{userId}) pu inner join USER_TB us on us.id = pu.user_id inner join product_tb pr on pr.id = pu.product_id
+   </select>
 </mapper>

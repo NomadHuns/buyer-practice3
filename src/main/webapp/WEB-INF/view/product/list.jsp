@@ -14,8 +14,8 @@
                 <tr>
                     <td>${product.id}</td>
                     <td><a href="/product/${product.id}">${product.name}</a></td>
-                    <td>${product.price}</td>
-                    <td>${product.qty}</td>
+                    <td>${product.price}원</td>
+                    <td>${product.qty}개</td>
                     <td>${product.createdAtToString}</td>
                 </tr>
             </c:forEach>

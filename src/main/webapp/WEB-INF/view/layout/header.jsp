@@ -22,6 +22,7 @@
 
                         <c:otherwise>
                             <li><a href="/logout">로그아웃</a></li>
+                            <li><a href="/purchase/list">구매내역</a></li>
                         </c:otherwise>
                     </c:choose>
                 </ul>
