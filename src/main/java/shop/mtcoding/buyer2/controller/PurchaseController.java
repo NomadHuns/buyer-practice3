@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import shop.mtcoding.buyer2.dto.PurchaseAllDto;
@@ -33,7 +34,10 @@ public class PurchaseController {
         if (principal == null) {
             return "redirect:/missing";
         }
-        purchaseService.buyTransaction(productId, count, principal.getId());
+        int result = purchaseService.buyTransaction(productId, count, principal.getId());
+        if (result == -1) {
+            return "redirect:/missing";
+        }
         return "redirect:/product/" + productId;
     }
 
@@ -46,5 +50,18 @@ public class PurchaseController {
         List<PurchaseAllDto> purchaseAllDtoList = purchaseRepository.findByUserId(principal.getId());
         model.addAttribute("purchaseAllDtoList", purchaseAllDtoList);
         return "purchase/list";
+    }
+
+    @PostMapping("/purchase/{id}/delete")
+    public String delete(@PathVariable("id") int id) {
+        User principal = (User) session.getAttribute("principal");
+        if (principal == null) {
+            return "redirect:/missing";
+        }
+        int result = purchaseService.deleteTranscation(principal.getId(), id);
+        if (result == -1) {
+            return "redirect:/missing";
+        }
+        return "redirect:/purchase/list";
     }
 }
